@@ -58,3 +58,9 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# Build outputs
+/tangram-exe/
+*.zip
+*.app
+.DS_Store
