@@ -33,4 +33,121 @@ This component manages the communication with Kinect Server. In order to start t
 
 This component (singleton) allows you to load assets dynamicaly from two main folder: one is the standard StreamingAssets and the other is the one specified in the public string _PathResources_. There are three types of assets that can be loaded: Audio, Texture2D, Video. The first two can be loaded respectively with `LoadAudioClipFromStreamingAsset(string folder, string filename, Action<AudioClip> callback)` and `LoadImageFromStreamingAsset(string folder, string filename, Action<Texture2D> callback)` where _folder_ is the path of the folder where to search for the _filename_ (with extension) and _callback_ is the function called after the resource is loaded. Both functions return a Coroutine (null if the loading fails) that can be used to check the end of loading. Instead for the video asset you can use the `LoadVideoClipFromStreamingAsset(string folder, string filename, VideoPlayer player)` which starts a video streaming in the _player_ passed to the function. This function returns a bool that states the loading result.
 
-# Magic 
+# Magic Room
+
+# MagicRoom
+
+**MagicRoom** is a Unity-based project focused on interactive and spatial experiences.  
+This repository is intentionally lightweight and tracks **only the project’s C# scripts and essential configuration files**.
+
+Large assets, scenes, builds, and generated Unity files are backed up using Unity’s own systems and are not stored in this repository.
+
+---
+
+## 📌 Repository Scope
+
+This repository includes:
+
+- C# source code (`Assets/Scripts`)
+- Required `.meta` files for script GUID stability
+- Unity Package Manager manifests
+- Documentation and configuration files
+
+Everything else (assets, scenes, builds, caches) is excluded by design.
+
+---
+
+## 📁 Tracked Structure
+
+```
+Assets/
+└── Scripts/              # Project C# scripts (+ .meta files)
+
+Packages/
+├── manifest.json         # Unity package dependencies
+└── packages-lock.json
+
+.gitignore
+README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/HediyeRaisy/MagicRoom.git
+cd MagicRoom
+```
+
+### 2. Open in Unity
+
+- Open **Unity Hub**
+- Add the project folder
+- Unity will automatically restore packages using `Packages/manifest.json`
+
+> **Note:** Assets, scenes, and builds must be restored from your Unity backups or asset packages.
+
+---
+
+## ❌ What Is Not Tracked
+
+The following are **intentionally excluded** from Git:
+
+- Unity generated folders (`Library/`, `Temp/`, `Obj/`, `Logs/`)
+- Build outputs (`.exe`, `.app`, WebGL, Android, iOS builds)
+- Large binary assets (textures, audio, video, models)
+- IDE/editor settings
+- Crash logs and caches
+
+This keeps the repository fast, clean, and within GitHub limits.
+
+---
+
+## 🛠 Backup Strategy
+
+The full Unity project (assets, scenes, builds) should be backed up using one or more of the following:
+
+- Unity Version Control (Plastic SCM)
+- Exported Unity packages (`.unitypackage`)
+- Local or cloud backups (e.g. Drive, Dropbox)
+
+This repository serves as the **source of truth for code only**.
+
+---
+
+## 📦 Future: Git Large File Storage (LFS)
+
+If you decide to store the full Unity project on GitHub, Git LFS can be used for large files:
+
+```bash
+git lfs install
+git lfs track "*.resS" "*.unitypackage" "*.fbx" "*.psd" "*.wav" "*.mp4" "*.zip"
+git add .gitattributes
+git commit -m "Configure Git LFS for large Unity files"
+```
+
+For existing repositories with large files already committed, history migration will be required.
+
+---
+
+## 🤝 Contributing
+
+- Keep commits focused on scripts and logic
+- Avoid committing build outputs or generated files
+- Use branches and pull requests for changes
+
+---
+
+## 📄 License
+
+Specify your license here (e.g. MIT, Apache-2.0).
+
+---
+
+## 📬 Contact
+
+For questions or collaboration, feel free to open an issue or reach out.
+
