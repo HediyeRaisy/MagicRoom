@@ -1,192 +1,216 @@
-# ✨ Magic Room: Tangram Edition 🧩
+# Magik Room Manager
 
-An embodied, room-scale Tangram game for attention, planning, and spatial reasoning — built for the **Magic Room** environment.
+**Magik Room Manager** is a Unity-based middleware integration layer designed to connect Unity applications with the **Magika / Magic Room architecture**.  
+It provides a unified manager and a set of modular components that enable communication with external services such as lighting, appliances, text-to-speech, Kinect tracking, and experience management within a Magic Room environment.
 
-🎥 **Project introduction video:**  
-👉 https://youtu.be/_81DZwDntUg?si=RBXkI99-Qoz_kLeT
-
----
-
-## 🌟 What Is This Project?
-
-**Magic Room: Tangram Edition** is a Unity-based, projection-driven Tangram game designed for children aged **6–8**, with a particular focus on supporting **attention regulation, planning, and spatial reasoning** in children with ADHD.
-
-Instead of sitting at a screen, children interact using their **whole body**:
-
-- 🧍 Standing on Tangram pieces to select them  
-- ✋ Using hand gestures to rotate and flip shapes  
-- 🚶 Moving in physical space to place pieces correctly  
-
-The game is played inside a **Magic Room**: a smart, immersive environment that combines **floor and wall projection**, body tracking, and multisensory feedback.
-
-This project was developed as an **academic prototype** within an Advanced User Interface / HCI context.
+This repository contains the **core scripts and prefabs** required to integrate a Unity scene with the Magika ecosystem.
 
 ---
 
-## 🧠 Research & Design Foundations
+## 🎥 Gameplay Video
 
-The interaction design is grounded in:
+Below is a gameplay video demonstrating the **Magic Room: Tangram Osmo Edition**, showcasing embodied interaction, spatial manipulation, and gesture-based control in the Magic Room environment.
 
-- **Embodied and spatial interaction**
-- The **PASS cognitive model**  
-  *(Planning – Attention – Simultaneous – Successive processing)*
-- Mediated learning (therapist-in-the-loop)
-- Careful control of sensory load to avoid overstimulation
+[![Magic Room Gameplay Video](https://img.youtube.com/vi/GdXRwATgJOQ/0.jpg)](https://youtu.be/GdXRwATgJOQ)
 
-Tangram puzzles are embedded in **story-driven scenarios** (e.g. *Magic Forest*, *Cat Explorer*, *Sleeping Princess*) to maintain engagement and motivation.
+> This video replaces the duplicated introduction video and provides a clearer view of real in-room interaction and gameplay flow.
 
 ---
 
-## 🧩 What the Game Does
+## 📦 Repository Overview
 
-The system uses a **clear spatial division of interaction**:
-
-### 🟦 Floor Projection
-- Displays Tangram pieces  
-- Used for **selection via dwell-time** (standing still on a piece)
-
-### 🟩 Wall Projection
-- Displays target silhouettes  
-- Shows rotation / flip controls  
-- Provides narrative context and feedback  
-
-### 🔄 Core Interaction Flow
-
-1. A Tangram silhouette appears on the wall  
-2. Pieces are projected onto the floor  
-3. The child selects a piece by standing on it  
-4. Orientation is adjusted using hand gestures  
-5. The piece is grabbed and moved using body movement  
-6. Correct placement snaps into position with audio-visual feedback  
-7. The game progresses within a narrative scenario  
+- All scripts are located in the **`MagikRoomScripts`** folder inside Unity’s standard `Assets/Scripts` structure.
+- Reusable prefabs are provided in the **`Prefabs`** folder to simplify setup and configuration.
+- The system follows a **singleton-based architecture**, with `MagicRoomManager` acting as the main access point.
 
 ---
 
-## 🧱 Relationship to Magic Room Manager (Important!)
+## 📁 Project Structure
 
-⚠️ **This repository is NOT the Magic Room Manager.**
-
-- **Magic Room Manager** handles:
-  - room calibration
-  - projection mapping
-  - sensing & body-tracking infrastructure
-
-- **Magic Room: Tangram Edition** is a **game module built on top of the Magic Room ecosystem**
-
-👉 Think of it like this:
-
-> 🏗️ *Magic Room Manager = the interactive space*  
-> 🎮 *Tangram Edition = the game that lives inside it*
+```
+Assets/
+├── Scripts/
+│   └── MagikRoomScripts/        # Core Magik Room managers and adapters
+│
+├── Prefabs/
+│   └── Magic Room Adapter      # Main prefab for Magika integration
+│
+└── StreamingAssets/             # Optional shared resources
+```
 
 ---
 
-## 🛠️ Technical Overview
+## 🚀 Getting Started
 
-- 🎮 Engine: **Unity**
-- 💻 Language: **C#**
-- 🧩 Architecture: Unity component-based design
-- 🤸 Interaction: gesture-based & body-based (via Magic Room sensing layer)
+### 1. Add the Magic Room Adapter
 
-### Main Functional Modules
-- Tangram puzzle management  
-- Interaction & manipulation logic  
-- Visual feedback & animations  
-- Audio feedback & narration triggers  
-- Scene & game-state management  
+To connect your Unity scene with the Magika architecture:
 
-Each Tangram piece is a Unity `GameObject` with attached scripts controlling:
-selection, transformation, movement, and placement validation.
+1. Open your Unity project
+2. Drag the **`Magic Room Adapter`** prefab into your scene
+3. Configure the prefab in the Inspector:
+   - **HTTP Address** (format: `protocol://host`)
+   - **HTTP Port**
+   - Enable the required modules (Light, Appliances, Kinect, TTS, etc.)
 
----
+### Recommended Setup
 
-## 📂 Repository Scope (Scripts-Only by Design)
-
-This repository intentionally follows a **scripts-only Git strategy**.
-
-### ✅ What’s included
-- Unity **C# scripts**
-- Interaction and gameplay logic
-- Minimal configuration files
-- Documentation
-
-### 🚫 What’s NOT included
-- Unity build outputs (`.exe`, `.app`)
-- Large binary assets
-- `Library/`, `Temp/`, and build folders
-- Hardware calibration data
-
-📦 These are backed up separately using Unity’s tools and external storage.
+It is strongly recommended to:
+- Create an **empty bootstrap scene** as the **first scene** in the build order
+- Add **only** the `Magic Room Adapter` prefab (and other singletons if needed)
+- Automatically load the main scene after initialization by setting the **Scene Index** in the prefab Inspector
 
 ---
 
-## 🚀 How to Use the Code
+## 🧠 MagicRoomManager Architecture
 
-### 🔹 If you want to **read or study the code**
-You’re good to go 👍  
-This repo is ideal for:
-- understanding embodied Tangram interaction logic
-- studying room-scale AUI design
-- extending the gameplay mechanics
+`MagicRoomManager` is a singleton responsible for:
 
-### 🔹 If you want to **run or extend the game**
-You will need:
+1. Fetching the **SystemConfiguration** from the Experience Manager (`localhost:7100`)
+2. Initializing and enabling selected modules
+3. Managing shared resources and optional `StreamingAssetsManager`
 
-1. **Unity** (same or compatible version used in development)
-2. A working **Magic Room environment**, including:
-   - projection setup (floor + wall)
-   - sensing / body-tracking infrastructure
-3. The **Magic Room Manager framework** (not included here)
+All modules are accessed through:
 
-📌 This repo provides the **game logic**, not the full runtime environment.
+```csharp
+MagicRoomManager.Instance
+```
 
----
-
-## 🎥 Project Video
-
-We created a short video introducing the project, the interaction concept, and the Magic Room setup:
-
-▶️ **Watch here:**  
-https://youtu.be/_81DZwDntUg?si=RBXkI99-Qoz_kLeT
-
-This video works as a visual overview of:
-- the interaction paradigm
-- spatial layout
-- gameplay flow
-- narrative structure
+Example:
+```csharp
+var lightManager = MagicRoomManager.Instance.MagicRoomLightManager;
+if (lightManager != null)
+{
+    // Use the light manager
+}
+```
 
 ---
 
-## 🔄 Version Control Strategy
+## 🔧 Available Modules
 
-- `.gitignore` is configured to track **scripts only**
-- Large assets and builds are excluded
-- Future iterations may migrate selected assets to **Git LFS**
+### 🎮 Experience Manager
 
-This keeps the repo:
-- clean 🧼
-- lightweight ⚡
-- GitHub-friendly 🐙
+Handles communication with the Experience Manager server.
 
----
+**Endpoint:** `/ExperienceManager`
 
-## 📌 Project Status
+**Method:**
+```csharp
+SendEvent(string eventName, JObject payload = null)
+```
 
-This is an **academic prototype**, evaluated through a system-level demonstration in a controlled laboratory environment.  
-It is not a commercial product.
+Sends the event with an optional JSON payload.
 
 ---
 
-## 👩‍💻 Authors
+### 🔌 Appliances Manager
 
-- **Ghazal Sepehrirad**  
-- **Hedieh Raeisi**
+Manages communication with the Appliances Server.
 
-🎓 Supervised by:  
-**Prof. Franca Garzotto**
+**Method:**
+```csharp
+SendChangeCommand(string appliance, string cmd)
+```
+
+- `appliance`: appliance name  
+- `cmd`: `"ON"` or `"OFF"`
 
 ---
 
-## 📜 License
+### 💡 Light Manager
 
-Provided for academic and research purposes.  
-See license information if applicable.
+Controls lights connected to the Light Server.
+
+```csharp
+SendColor(string color, int brightness = 100, string name = null,
+          LocDepth depth = LocDepth.all,
+          LocHorizontal horizontal = LocHorizontal.all,
+          LocVertical vertical = LocVertical.all)
+```
+
+```csharp
+SendColor(Color col, string name = null,
+          LocDepth depth = LocDepth.all,
+          LocHorizontal horizontal = LocHorizontal.all,
+          LocVertical vertical = LocVertical.all)
+```
+
+---
+
+### 🗣 Text To Speech Manager
+
+Manages speech synthesis.
+
+```csharp
+GenerateAudioFromText(string text, Voices voice)
+GenerateAudioFromText(string text)
+```
+
+**Events:**
+- `StartSpeak`
+- `EndSpeak`
+
+---
+
+### 🦴 Kinect Manager
+
+Handles skeleton tracking and gesture recognition.
+
+```csharp
+StartStreamingSkeletons(int interval)
+StopStreamingSkeletons()
+```
+
+```csharp
+ReadLastSamplingKinect()
+```
+
+**Events:**
+```csharp
+Skeletons(List<Skeleton> skeletons)
+```
+
+Additional features:
+```csharp
+GetStatusKinect()
+SetGestureRecognitionKinect(Dictionary<string, float> gesture)
+ResetGestureRecognized()
+```
+
+---
+
+### 📂 Streaming Assets Manager
+
+Loads external resources dynamically.
+
+```csharp
+LoadAudioClipFromStreamingAsset(string folder, string filename, Action<AudioClip> callback)
+LoadImageFromStreamingAsset(string folder, string filename, Action<Texture2D> callback)
+LoadVideoClipFromStreamingAsset(string folder, string filename, VideoPlayer player)
+```
+
+Resources can be loaded from:
+- Unity `StreamingAssets`
+- A custom folder defined by `PathResources`
+
+---
+
+## ⚠️ Notes & Best Practices
+
+- Always check module instances for `null` before use
+- Enable only required modules
+- Keep the Magic Room Adapter in a bootstrap scene
+- Ensure all external servers are running before launch
+
+---
+
+## 📄 License
+
+Specify the license for this project here.
+
+---
+
+## 📬 Contact
+
+For questions, issues, or integration support, please open an issue or contact the project maintainers.
