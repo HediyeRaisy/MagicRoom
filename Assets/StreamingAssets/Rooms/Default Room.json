@@ -1,0 +1,95 @@
+{
+	"Lights":[{
+		"name" : "Front_Right",
+		"id": 0,
+		"posx": "Right",
+		"posy": "Top",
+		"posz": "Front",
+		"fixed" : true
+	},{
+		"name" : "Front_Left",
+		"id": 1,
+		"posx": "left",
+		"posy": "Top",
+		"posz": "Front",
+		"fixed" : true
+	},{
+		"name" : "Back_Right",
+		"id": 2,
+		"posx": "Right",
+		"posy": "Top",
+		"posz": "Back",
+		"fixed" : true
+	},{
+		"name" : "Back_Left",
+		"id": 3,
+		"posx": "Left",
+		"posy": "Top",
+		"posz": "Back",
+		"fixed" : true
+	},{
+		"name" : "Hue go 1",
+		"id": 4,
+		"posx": "All",
+		"posy": "All",
+		"posz": "All",
+		"fixed" : false
+	},{
+		"name" : "Hue go 2",
+		"id": 5,
+		"posx": "All",
+		"posy": "All",
+		"posz": "All",
+		"fixed" : false
+	}],
+	"SmartPlugs":[{
+		"name" : "Macchina delle Bolle",
+		"id": 0,
+		"posx": 0,
+		"posy": 4.3,
+		"posz": 4,
+		"prefabname" : "Bubble Machine"
+	}],
+	"Voices": [{
+		"Name":"Microsoft Elsa Desktop",
+		"Language": "it-IT",
+		"Gender": "Female",
+		"Alias": ""
+	},{
+		"Name":"Paola",
+		"Language": "it-IT",
+		"Gender": "Female",
+		"Alias": ""
+	},{
+		"Name":"ScanSoft Silvia_Dri40_16kHz",
+		"Language": "it-IT",
+		"Gender": "Female",
+		"Alias": ""
+	},{
+		"Name":"Microsoft Hazel Desktop",
+		"Language": "en-GB",
+		"Gender": "Female",
+		"Alias": ""
+	},{
+		"Name":"Microsoft Zira Desktop",
+		"Language": "en-US",
+		"Gender": "Female",
+		"Alias": ""
+	},{
+		"Name":"Luca",
+		"Language": "it-IT",
+		"Gender": "Male",
+		"Alias": ""
+	},{
+		"Name":"VE_Italian_Federica_22kHz",
+		"Language": "it-IT",
+		"Gender": "Female",
+		"Alias": "Magika"
+	},{
+		"Name":"VE_Italian_Luca_22kHz",
+		"Language": "it-IT",
+		"Gender": "Male",
+		"Alias": ""
+	}],
+	"SmartObects": ["Era"]
+}

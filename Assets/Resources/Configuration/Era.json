@@ -1,0 +1,132 @@
+{
+	"id": "1934415",
+	"name": "Luminous Oracle",
+	"sensors": {
+		"rfids": [
+			"0"
+		]
+	},
+	"actuators": {
+		"lights": [
+			"leds hasn't an associate name"
+		]
+	},
+	"commands": [
+		{
+			"name": "light",
+			"schema": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": [
+							"string",
+							"null"
+						]
+					},
+					"color": {
+						"type": "string"
+					},
+					"brightness": {
+						"type": "integer"
+					}
+				}
+			}
+		},
+		{
+			"name": "sequencedColor",
+			"targetActuators": [
+				"led"
+			],
+			"schema": {
+				"type": "object",
+				"properties": {
+					"color": {
+						"type": "string"
+					},
+					"speed": {
+						"type": "integer"
+					}
+				}
+			}
+		},
+		{
+			"name": "fadeContinuous",
+			"targetActuators": [
+				"led"
+			],
+			"schema": {
+				"type": "object",
+				"properties": {
+					"color": {
+						"type": "string"
+					},
+					"speed": {
+						"type": "integer"
+					}
+				}
+			}
+		},
+		{
+			"name": "fadeIn",
+			"targetActuators": [
+				"led"
+			],
+			"schema": {
+				"type": "object",
+				"properties": {
+					"speed": {
+						"type": "integer"
+					},
+					"color": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		{
+			"name": "fadeOut",
+			"targetActuators": [
+				"led"
+			],
+			"schema": {
+				"type": "object",
+				"properties": {
+					"speed": {
+						"type": "integer"
+					}
+				}
+			}
+		},
+		{
+			"name": "rainbow",
+			"targetActuators": [
+				"led"
+			],
+			"schema": {
+				"type": "object",
+				"properties": {
+					"period": {
+						"type": "integer"
+					}
+				}
+			}
+		},
+		{
+			"name": "oneledpath",
+			"targetActuators": [
+				"led"
+			],
+			"schema": {
+				"type": "object",
+				"properties": {
+					"color": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"color"
+				]
+			}
+		}
+	]
+}
