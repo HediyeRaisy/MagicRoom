@@ -1,156 +1,192 @@
-# Magic Room: Tangram Edition
+# ✨ Magic Room: Tangram Edition 🧩
 
-## Overview
+An embodied, room-scale Tangram game for attention, planning, and spatial reasoning — built for the **Magic Room** environment.
 
-**Magic Room: Tangram Edition** is a Unity-based, room-scale interactive Tangram game designed to support **attention regulation, planning, and spatial reasoning** in children aged **6–8**, with a particular focus on children with **ADHD**.
-
-The project transforms traditional Tangram puzzles into an **embodied and spatial experience** using full-body movement, gesture-based interaction, and large-scale **floor and wall projection**. Instead of interacting through a mouse, keyboard, or touchscreen, children solve puzzles by moving in physical space, selecting pieces with their body, and manipulating shapes through natural gestures.
-
-This project was developed as an **academic prototype** within the context of Advanced User Interface and Human–Computer Interaction research.
+🎥 **Project introduction video:**  
+👉 https://youtu.be/_81DZwDntUg?si=RBXkI99-Qoz_kLeT
 
 ---
 
-## Relationship to Magic Room Manager
+## 🌟 What Is This Project?
 
-This repository **is not the Magic Room Manager**.
+**Magic Room: Tangram Edition** is a Unity-based, projection-driven Tangram game designed for children aged **6–8**, with a particular focus on supporting **attention regulation, planning, and spatial reasoning** in children with ADHD.
 
-- **Magic Room Manager** is the underlying smart-space framework responsible for:
-  - room calibration  
-  - projection mapping  
-  - sensing and body-tracking infrastructure  
+Instead of sitting at a screen, children interact using their **whole body**:
 
-- **Magic Room: Tangram Edition** is a **game module built on top of the Magic Room ecosystem**.
+- 🧍 Standing on Tangram pieces to select them  
+- ✋ Using hand gestures to rotate and flip shapes  
+- 🚶 Moving in physical space to place pieces correctly  
 
-In short:
+The game is played inside a **Magic Room**: a smart, immersive environment that combines **floor and wall projection**, body tracking, and multisensory feedback.
 
-> **Magic Room Manager provides the interactive environment**  
-> **Magic Room: Tangram Edition provides the Tangram gameplay, logic, and interaction design**
-
-The Tangram game reuses the Magic Room interaction paradigm but introduces **new mechanics, narratives, and cognitive goals** specific to Tangram-based problem solving.
+This project was developed as an **academic prototype** within an Advanced User Interface / HCI context.
 
 ---
 
-## What the Game Does
+## 🧠 Research & Design Foundations
 
-The game implements a **projection-based Advanced User Interface** with a clear spatial division of interaction:
-
-- **Floor projection**
-  - Displays Tangram pieces
-  - Used for selection through dwell-time (standing on a piece)
-
-- **Wall projection**
-  - Displays target silhouettes
-  - Provides rotation / flip controls
-  - Shows narrative context and feedback
-
-### Core Interaction Flow
-
-1. A Tangram silhouette appears on the wall  
-2. Pieces are projected on the floor  
-3. The child selects a piece by standing on it (dwell-time)  
-4. Orientation is adjusted via hand gestures (rotate / flip)  
-5. The child grabs and moves the piece using body movement  
-6. Correct placement snaps into position with audio-visual feedback  
-7. The game progresses piece by piece within a narrative scenario  
-
-The experience is embedded in **story-driven modules** (e.g. *Magic Forest*, *Cat Explorer*, *Sleeping Princess*) to promote motivation and sustained engagement.
-
----
-
-## Design Foundations
-
-The project is grounded in:
+The interaction design is grounded in:
 
 - **Embodied and spatial interaction**
-- The **PASS cognitive model** (Planning, Attention, Simultaneous, Successive)
+- The **PASS cognitive model**  
+  *(Planning – Attention – Simultaneous – Successive processing)*
 - Mediated learning (therapist-in-the-loop)
-- Controlled sensory stimulation to avoid overload
+- Careful control of sensory load to avoid overstimulation
 
-The system is designed for **short, structured sessions** in therapy rooms, schools, or research labs equipped with projection and motion-tracking.
+Tangram puzzles are embedded in **story-driven scenarios** (e.g. *Magic Forest*, *Cat Explorer*, *Sleeping Princess*) to maintain engagement and motivation.
 
 ---
 
-## Technical Overview
+## 🧩 What the Game Does
 
-- **Engine:** Unity  
-- **Language:** C#  
-- **Architecture:** Component-based Unity architecture  
-- **Interaction:** Gesture-based and body-based input (Magic Room sensing layer)  
+The system uses a **clear spatial division of interaction**:
+
+### 🟦 Floor Projection
+- Displays Tangram pieces  
+- Used for **selection via dwell-time** (standing still on a piece)
+
+### 🟩 Wall Projection
+- Displays target silhouettes  
+- Shows rotation / flip controls  
+- Provides narrative context and feedback  
+
+### 🔄 Core Interaction Flow
+
+1. A Tangram silhouette appears on the wall  
+2. Pieces are projected onto the floor  
+3. The child selects a piece by standing on it  
+4. Orientation is adjusted using hand gestures  
+5. The piece is grabbed and moved using body movement  
+6. Correct placement snaps into position with audio-visual feedback  
+7. The game progresses within a narrative scenario  
+
+---
+
+## 🧱 Relationship to Magic Room Manager (Important!)
+
+⚠️ **This repository is NOT the Magic Room Manager.**
+
+- **Magic Room Manager** handles:
+  - room calibration
+  - projection mapping
+  - sensing & body-tracking infrastructure
+
+- **Magic Room: Tangram Edition** is a **game module built on top of the Magic Room ecosystem**
+
+👉 Think of it like this:
+
+> 🏗️ *Magic Room Manager = the interactive space*  
+> 🎮 *Tangram Edition = the game that lives inside it*
+
+---
+
+## 🛠️ Technical Overview
+
+- 🎮 Engine: **Unity**
+- 💻 Language: **C#**
+- 🧩 Architecture: Unity component-based design
+- 🤸 Interaction: gesture-based & body-based (via Magic Room sensing layer)
 
 ### Main Functional Modules
-
 - Tangram puzzle management  
-- Interaction and manipulation logic  
-- Visual feedback and animations  
-- Audio feedback and narration triggers  
-- Scene and game-state management  
+- Interaction & manipulation logic  
+- Visual feedback & animations  
+- Audio feedback & narration triggers  
+- Scene & game-state management  
 
-Each Tangram piece is implemented as a Unity GameObject with attached scripts controlling selection, transformation, movement, and placement validation.
+Each Tangram piece is a Unity `GameObject` with attached scripts controlling:
+selection, transformation, movement, and placement validation.
 
 ---
 
-## Repository Scope (Important)
+## 📂 Repository Scope (Scripts-Only by Design)
 
 This repository intentionally follows a **scripts-only Git strategy**.
 
-### Included in this repo
+### ✅ What’s included
 - Unity **C# scripts**
-- Game logic and interaction code
+- Interaction and gameplay logic
 - Minimal configuration files
 - Documentation
 
-### Not included
-- Unity build outputs (`.exe`, `.app`, etc.)
+### 🚫 What’s NOT included
+- Unity build outputs (`.exe`, `.app`)
 - Large binary assets
-- Project `Library/`, `Temp/`, or build folders
-- Hardware-specific calibration data
+- `Library/`, `Temp/`, and build folders
+- Hardware calibration data
 
-These are managed separately using Unity’s tooling and external backups.
-
----
-
-## Version Control Strategy
-
-- `.gitignore` is configured to **track only scripts**
-- Large assets and builds are excluded to keep the repository lightweight
-- Future versions may migrate selected assets to **Git LFS**
-
-This approach ensures:
-- clean Git history  
-- no GitHub file-size limit issues  
-- focus on reproducible interaction logic  
+📦 These are backed up separately using Unity’s tools and external storage.
 
 ---
 
-## How to Use This Repository
+## 🚀 How to Use the Code
 
-This repository is intended for:
+### 🔹 If you want to **read or study the code**
+You’re good to go 👍  
+This repo is ideal for:
+- understanding embodied Tangram interaction logic
+- studying room-scale AUI design
+- extending the gameplay mechanics
 
-- Reviewing the **interaction logic and game architecture**
-- Extending or adapting Tangram gameplay within a Magic Room setup
-- Academic reference and further research development
+### 🔹 If you want to **run or extend the game**
+You will need:
 
-To run the full experience, a **Magic Room installation** (projection + tracking) and the corresponding environment configuration are required.
+1. **Unity** (same or compatible version used in development)
+2. A working **Magic Room environment**, including:
+   - projection setup (floor + wall)
+   - sensing / body-tracking infrastructure
+3. The **Magic Room Manager framework** (not included here)
+
+📌 This repo provides the **game logic**, not the full runtime environment.
 
 ---
 
-## Project Status
+## 🎥 Project Video
 
-This project is an **academic prototype** evaluated through a system-level demonstration in a controlled laboratory environment. It is not a commercial product.
+We created a short video introducing the project, the interaction concept, and the Magic Room setup:
+
+▶️ **Watch here:**  
+https://youtu.be/_81DZwDntUg?si=RBXkI99-Qoz_kLeT
+
+This video works as a visual overview of:
+- the interaction paradigm
+- spatial layout
+- gameplay flow
+- narrative structure
 
 ---
 
-## Authors
+## 🔄 Version Control Strategy
 
-- Ghazal Sepehrirad  
-- Hedieh Raeisi  
+- `.gitignore` is configured to track **scripts only**
+- Large assets and builds are excluded
+- Future iterations may migrate selected assets to **Git LFS**
 
-Supervised by:  
+This keeps the repo:
+- clean 🧼
+- lightweight ⚡
+- GitHub-friendly 🐙
+
+---
+
+## 📌 Project Status
+
+This is an **academic prototype**, evaluated through a system-level demonstration in a controlled laboratory environment.  
+It is not a commercial product.
+
+---
+
+## 👩‍💻 Authors
+
+- **Ghazal Sepehrirad**  
+- **Hedieh Raeisi**
+
+🎓 Supervised by:  
 **Prof. Franca Garzotto**
 
 ---
 
-## License
+## 📜 License
 
-This project is provided for academic and research purposes.  
+Provided for academic and research purposes.  
 See license information if applicable.
