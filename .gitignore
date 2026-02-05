@@ -64,3 +64,10 @@ crashlytics-build.properties
 *.zip
 *.app
 .DS_Store
+
+# Build outputs
+/tangram-exe/
+/magicroom_windows/
+*.app
+*.zip
+.DS_Store
