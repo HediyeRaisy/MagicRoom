@@ -168,6 +168,7 @@ This keeps the repo:
 
 This is an **academic prototype**, evaluated through a system-level demonstration in a controlled laboratory environment.  
 It is not a commercial product.
+For more details, see the report pdf.
 
 ---
 
